@@ -1,0 +1,156 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+# Path for texlive
+export PATH="/usr/local/texlive/2019/bin/x86_64-linux:$PATH"
+
+# added by Miniconda2 4.0.5 installer
+export PATH="/home/vipul/miniconda2/bin:$PATH"
+
+export REPOS="/home/vipul/REPOSITORIES"
+#----------------------------------------------------------------------
+
+# Latex PATH
+#export LATEXPATH="/home/vipul/REPOSITORIES/GEOTOOLS/latex_util/bib"
+#export PATH=$LATEXPATH:$PATH
+# first check the local path (priority #1)
+export TEXINPUTS=.:
+export BSTINPUTS=.:
+export BIBINPUTS=.:
+# then check here (priority #2)
+#export LATEX_SRC=$REPOS/manuscripts/latex
+export LATEX_SRC=$REPOS/GEOTOOLS/latex_util/bib
+export LATEX_ADDITIONS=/usr/local/texlive/2018/texmf-dist//
+export TEXINPUTS=${TEXINPUTS}:${LATEX_SRC}
+export BSTINPUTS=${BSTINPUTS}:${LATEX_SRC}
+export BIBINPUTS=${BIBINPUTS}:${LATEX_SRC}
+#----------------------------------------------------------------------
+
+# MATLAB PATH 
+export MATLABHOME="/home/vipul/packages/MATLAB/R2019a/bin"
+export PATH=$MATLABHOME:$PATH
+export PATH="/home/vipul/.matlab":$PATH
+#----------------------------------------------------------------------
+
+# PARAVIEW
+
+alias paraview='/home/vipul/REPOSITORIES/paraview_build/bin/paraview'
+#----------------------------------------------------------------------
+# SAC PATH
+export SACHOME=/usr/local/sac
+. ${SACHOME}/bin/sacinit.sh
+export PATH="/usr/local/sac/bin:$PATH"
+
+# SAC: reads in macros file for
+#alias sac='bash $SACHOME/macros/init.m'
+#----------------------------------------------------------------------
+
+#cmake
+export PATH=/home/vipul/packages/cmake/cmake-3.15.2-Linux-x86_64/bin:$PATH
+
+# seismo-utils
+export SUTIL=/home/vipul/REPOSITORIES/seismo
+
+# GEOTOOLS home
+export GEOTOOLS=/home/vipul/REPOSITORIES/GEOTOOLS
+
+# FK-CAP-IITR
+export FKPATH=/home/vipul/REPOSITORIES/fk
+export PATH=$FKPATH:$PATH
+
+# CAPHOME
+export CAPHOME=/home/vipul/REPOSITORIES/capuaf
+export CAPRUN=/home/vipul/CAP/
+
+# numerical recipes (for FK-CAP, etc)
+export NRHOME_C=$SUTIL/grp-utils/nr/NR_C302/legacy/nr2/C_211_mod
+export NRHOME_F90=$SUTIL/grp-utils/nr/recipes_f-90
+
+export LD_LIBRARY_PATH=/usr/local/hdf5/lib:${LD_LIBRARY_PATH}
+# GMT and NETCDF (for pssac2)
+#export NETCDFHOME=/home/vipul/packages/netcdf/netcdf-c-4.7.1
+export NETCDFHOME=/home/vipul/REPOSITORIES/axisem/SOLVER/UTILS/netcdf-4.3.3.1/include
+export GMTHOME=/usr/local/gmt:$PATH
+export PATH=$GMTHOME/bin:$PATH
+export MANPATH=/usr/share/doc/gmt/man
+export LD_LIBRARY_PATH=$NETCDFHOME/lib:${LD_LIBRARY_PATH}
+#=====================================================================
+
+# some aliases
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias pwd="pwd -P"
+alias cd="cd -P"
+alias m="more'"
+alias h="history"
+alias l="ls -CF"
+alias ldir="ls -l | egrep '^d'"
+alias xdvi="/usr/bin/xdvi-xaw"
+alias master='cd /aerun/sum/params/Stations'
+# some more ls aliases
+alias ll='ls -lh'
+alias la='ls -A'
+alias ev='evince'
+alias xe='emacs'
+alias gv='ghostscript'
+alias ok='okular'
+#alias printBW='lp -d avops2 -o sides=two-sided-long-edge'
+#alias printColor='lp -d avocolor -o sides=two-sided-long-edge'
+alias ds='display'
+alias fortune='fortune | cowsay'
+alias adobe='acroread'
+alias sps='sgftops'
+
+# MATLAB
+alias matnd='matlab -nodesktop'
+
+# Google Earth
+alias gearth='google-earth-pro'
+
+# grep 
+#alias grep='grep -i'
+
+# make grep colored
+#export GREP_OPTIONS='--color=auto'
+#alias grep="egrep"
+alias grep="grep -n --color"
+unset GREP_OPTIONS
+
+#----Git aliases---------------------------------
+alias gt='git status -uno'
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+alias gl='git log'
+alias gp='git push origin master'
+alias push='git push origin master'
+alias pull='git pull -r'
+
+#alias got='git '
+#alias get='git '
+
+alias pdfmerge='ghostscript -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merge_all.pdf'
+
+#----------SSH aliases-------------------------
+alias badger='ssh -XY vipul@badger.giseis.alaska.edu'
+alias azure='ssh -XY vsilwal@azurehead.centralindia.cloudapp.azure.com' #Year#2019
+alias chinook='ssh -XY vsilwal@chinook.alaska.edu' #Year#2019
+alias iitr='ssh vsilwalfes@192.168.124.2' #IITR_vsilwalfes
+alias dell='ssh vipul@10.20.1.189' #Vipul@1234#
+
+export GSETTINGS_SCHEMA_DIR=/usr/share/mate:/usr/share/mate:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+export XDG_DATA_DIRS=/usr/share/mate:/usr/share/mate:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
